@@ -25,7 +25,7 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Bonus loader (see Bonus section of the assignment) -->
     <items-loader-indicator></items-loader-indicator>
 
@@ -36,6 +36,7 @@
         title="{{ctl.title}}"
         on-remove="ctl.removeItem(index)">
       </found-items>
+      <span class="alert-danger" ng-if="ctl.error.length > 0">Error getting menu : {{ctl.error}}</span>
     </div>
   </div>
 

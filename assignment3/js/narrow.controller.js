@@ -14,14 +14,16 @@ function NarrowItDownController(searchService) {
     this.searchString = "";
     this.found = [];
     this.title = "Narrowed List";
-
+    this.error = "";
     this.narrow = function() {
         var t = searchService.getMatchedMenuItems(narrowCtl.searchString);
         t.then(function(response) {
           console.log(response);
+          narrowCtl.error = "";
           narrowCtl.found = response;
         })
         .catch(function(error) {
+          narrowCtl.error = error.statusText;
           console.log(error);
         });
       }

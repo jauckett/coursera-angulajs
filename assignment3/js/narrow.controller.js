@@ -3,28 +3,34 @@
 
 console.log("INIT NARROW");
 
-angular.module('NarrowItDownApp', []).
-controller('NarrowItDownController', NarrowItDownController);
+angular.module('NarrowItDownApp').
+//service('searchService', function() {}).
+controller('NarrowItDownController', ['searchService', NarrowItDownController]);
 
-function NarrowItDownController($http) {
+function NarrowItDownController(searchService) {
 
     var narrowCtl = this;
 
-    console.log($http);
-    narrowCtl.searchString = "TEST ";
-    narrowCtl.narrow = function() {
-      console.log("NARROW IT");
+    this.searchString = "";
+    this.found = [];
+    this.title = "Narrowed List";
 
-      // Simple GET request example:
-      $http({
-        method: 'GET',
-        url: 'https://davids-restaurant.herokuapp.com/menu_items.json'
-      }).then(function successCallback(response) {
+    this.narrow = function() {
+        var t = searchService.getMatchedMenuItems(narrowCtl.searchString);
+        t.then(function(response) {
           console.log(response);
-        }, function errorCallback(response) {
-          console.log(response);
+          narrowCtl.found = response;
+        })
+        .catch(function(error) {
+          console.log(error);
         });
-    }
+      }
+
+      narrowCtl.removeItem = function(index) {
+        narrowCtl.found.splice(index, 1);
+        console.log("REMOVE ITEM " + index);
+      }
+    console.log("SEARCH : " + this.searchString);
 
 }
 

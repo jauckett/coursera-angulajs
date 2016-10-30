@@ -18,10 +18,12 @@ function MenuSearchService($http) {
         var foundItems = [];
         var menuItems = result.data.menu_items;
         console.log("LEN=" + menuItems.length);
-        for (var i=0; i<menuItems.length; i++) {
-            // console.log(i + " : " + menuItems[i].description);
-            if (menuItems[i].description.toLowerCase().indexOf(searchString.toLowerCase()) != -1) {
-                foundItems.push(menuItems[i]);
+        if (searchString.length > 0) {
+          for (var i=0; i<menuItems.length; i++) {
+              // console.log(i + " : " + menuItems[i].description);
+              if (menuItems[i].description.toLowerCase().indexOf(searchString.toLowerCase()) != -1) {
+                  foundItems.push(menuItems[i]);
+                }
             }
         }
         // return processed items

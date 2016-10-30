@@ -1,12 +1,18 @@
 <h3>{{ $ctrl.myTitle }}</h3>
-<ol>
+<!-- <ol> -->
 
+  <div class="row menuItem" ng-repeat="item in $ctrl.items">
+            <!-- <div class="col-lg-3">{{item.short_name}}</div> -->
+            <div class="col-lg-3"><span><strong>Name :</strong> {{item.name}}</span></div>
+            <div class="col-lg-3"><strong>Description :</strong> {{item.description}}</div>
+            <div class="col-lg-3">
+                <button class="btn-info" ng-click="$ctrl.remove($index);">Remove Item</button>
+            </div>
+        </div>
+<!--
     <li ng-repeat="item in $ctrl.items">
-      <!-- <div class="col-xs-6"> -->
         {{ item.name }}
-<!-- </div>
-      <div class="col-xs-3"> -->
         <button class="btn-info" ng-click="$ctrl.remove($index);">Remove Item</button>
-      <!-- </div> -->
-    </li>
-</ol>
+    </li> -->
+
+  <!-- </ol> -->

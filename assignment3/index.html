@@ -37,6 +37,7 @@
         on-remove="ctl.removeItem(index)">
       </found-items>
       <span class="alert-danger" ng-if="ctl.error.length > 0">Error getting menu : {{ctl.error}}</span>
+      <span class="alert-warning" ng-if="ctl.found.length == 0">Nothing found!</span>
     </div>
   </div>
 

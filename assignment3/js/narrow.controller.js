@@ -11,14 +11,14 @@ function NarrowItDownController(searchService) {
 
     var narrowCtl = this;
 
-    this.searchString = "";
+    this.searchString = "chicken";
     this.found = [];
     this.title = "Narrowed List";
     this.error = "";
     this.narrow = function() {
         var t = searchService.getMatchedMenuItems(narrowCtl.searchString);
         t.then(function(response) {
-          console.log(response);
+//          console.log(response);
           narrowCtl.error = "";
           narrowCtl.found = response;
         })
